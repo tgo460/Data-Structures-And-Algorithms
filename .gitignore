@@ -1,0 +1,44 @@
+# Java build artifacts
+*.class
+*.jar
+*.war
+*.ear
+
+# Package directories
+lib/
+
+# Build directories
+bin/
+out/
+target/
+build/
+
+# IDEs and editors
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+~$*
+
+# Coverage and reports
+coverage/
+reports/
+
+# Gradle/Maven
+.gradle/
+.mvn/
+**/.gradle/
+**/.mvn/
