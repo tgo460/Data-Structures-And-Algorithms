@@ -21,7 +21,7 @@ public class MaxSubarraySum {
                     }
                 }
             }
-            System.out.println("Total Subarrays = " + maxSum);
+            System.out.println("Total Subarray sum = " + maxSum);
         }
 
     public static void main(String[] args) {
