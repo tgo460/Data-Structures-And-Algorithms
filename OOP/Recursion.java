@@ -89,7 +89,7 @@ public class Recursion {
             return i;
         }
 
-        // check for all oher cases
+        // check for all other cases
         return isFound;
     }
 

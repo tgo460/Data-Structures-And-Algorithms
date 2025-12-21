@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class TriesIntro {
+public class WordBreakProblem {
     static class Node {
-        Node[] children = new Node[26];
+        Node children[] = new Node[26];
         boolean eow = false;
 
         Node() {
@@ -14,9 +14,7 @@ public class TriesIntro {
 
     public static Node root = new Node();
 
-    // Insert in trie
-
-    public static void insert(String word) { // O(L)
+    public static void insert(String word) {
         Node curr = root;
         for(int level = 0; level < word.length(); level++) {
             int idx = word.charAt(level) - 'a';
@@ -25,10 +23,10 @@ public class TriesIntro {
             }
             curr = curr.children[idx];
         }
+
         curr.eow = true;
     }
 
-    // Search
     public static boolean search(String word) {
         Node curr = root;
 
@@ -44,15 +42,31 @@ public class TriesIntro {
         return curr.eow == true;
     }
 
+    public static boolean wordBreak(String key) {
+
+        if(key.length() == 0) {
+            return true;
+        }
+
+        for(int i = 1; i <= key.length(); i++) {
+            // substring(0, i)
+            if(search(key.substring(0, i)) && wordBreak(key.substring(i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public static void main(String[] args) {
-        String[] words = {"the", "a", "there", "their", "any", "thee"};
+        String arr[] = {"i", "like", "sam", "samsung", "mobile", "ice"};
 
-        for(int i = 0; i < words.length; i++) {
-            insert(words[i]);
+        for(int i = 0; i < arr.length; i++) {
+            insert(arr[i]);
         }
-        
-        System.out.println(search("thee"));
-        System.out.println(search("thor"));
+
+        String key = "isung";
+
+        System.out.println(wordBreak(key));
     }
 }

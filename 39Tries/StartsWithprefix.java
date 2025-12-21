@@ -44,15 +44,44 @@ public class TriesIntro {
         return curr.eow == true;
     }
 
+    // startwith function
+
+    public static boolean startsWith(String prefix) {
+        Node curr = root;
+
+        for(int i = 0; i < prefix.length(); i++) {
+            int idx = prefix.charAt(i) - 'a';
+
+            if(curr.children[idx] == null) {
+                return false;
+            }
+
+            curr = curr.children[idx];
+        }
+
+        return true;
+    }
+
 
     public static void main(String[] args) {
-        String[] words = {"the", "a", "there", "their", "any", "thee"};
+        // String[] words = {"the", "a", "there", "their", "any", "thee"};
+        String[] words = {"apple", "app", "mango", "man", "woman"};
 
-        for(int i = 0; i < words.length; i++) {
-            insert(words[i]);
-        }
+        String prefix1 = "app";
+        String prefix2 = "moon";
+
+
+       for(int i = 0; i < words.length; i++) {
+        insert(words[i]);
+       }
+
+       System.out.println(startsWith(prefix1));
+
+
         
-        System.out.println(search("thee"));
-        System.out.println(search("thor"));
+        // System.out.println(search("thee"));
+        // System.out.println(search("thor"));
+
+        
     }
 }

@@ -44,15 +44,31 @@ public class TriesIntro {
         return curr.eow == true;
     }
 
+    // count nodes
+    public static int countNodes(Node root) {
+        if(root == null) {
+            return 0;
+        }
+
+        int count = 0;
+        for(int i = 0; i < 26; i++) {
+            if(root.children[i] != null) {
+                count += countNodes(root.children[i]);
+            }
+        }
+
+        return count + 1;
+    }
 
     public static void main(String[] args) {
-        String[] words = {"the", "a", "there", "their", "any", "thee"};
 
-        for(int i = 0; i < words.length; i++) {
-            insert(words[i]);
+        String str = "apple"; //ans = 10
+
+        for(int i = 0; i < str.length(); i++) {
+            String suffix = str.substring(i);
+            insert(suffix);
         }
-        
-        System.out.println(search("thee"));
-        System.out.println(search("thor"));
+
+        System.out.println(countNodes(root));
     }
 }
